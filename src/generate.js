@@ -1,11 +1,11 @@
-var crypto = require('crypto');
+var CryptoJS = require('crypto-js');
 
 var self = module.exports;
 
 // Generates a random number
 var randomNumber = function(max) {
 	// gives a number between 0 (inclusive) and max (exclusive)
-	return crypto.randomBytes(1)[0] % max;
+	return CryptoJS.lib.WordArray.random(16).toString().split('').map(c => c.charCodeAt(0)).reduce((a, b) => a + b) % max;
 };
 
 // Possible combinations
